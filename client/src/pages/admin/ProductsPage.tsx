@@ -27,8 +27,9 @@ export default function ProductsPage() {
   // 1. Fetch Products
   const fetchProducts = async () => {
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-      const res = await fetch(`${API_URL}/api/products`);
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';      const res = await fetch(`${API_URL}/api/products`);
       const data = await res.json();
       setProducts(data);
       // Removed setIsLoading(false) because the state variable wasn't defined

@@ -27,8 +27,9 @@ export default function CategoryPage() {
     setIsLoading(true);
     setCurrentPage(1); // Reset page when category changes
 
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-    
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';    
     fetch(`${API_URL}/api/products`)
       .then(res => res.json())
       .then((data: Product[]) => {

@@ -36,8 +36,9 @@ export default function CartDrawer() {
         items: items.map(item => ({ name: item.name, id: item.id })) 
       };
 
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-      
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';      
       const response = await fetch(`${API_URL}/api/leads`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

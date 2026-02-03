@@ -9,8 +9,9 @@ export default function DashboardPage() {
   // 1. Fetch Real Data
   useEffect(() => {
     const fetchStats = async () => {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-      try {
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';      try {
         const res = await fetch(`${API_URL}/api/stats`);
         const data = await res.json();
         setStats(data);

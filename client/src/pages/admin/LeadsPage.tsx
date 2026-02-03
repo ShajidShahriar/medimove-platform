@@ -17,8 +17,9 @@ export default function LeadsPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchLeads = async () => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-    const res = await fetch(`${API_URL}/api/leads`);
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';    const res = await fetch(`${API_URL}/api/leads`);
     const data = await res.json();
     setLeads(data);
     setIsLoading(false);

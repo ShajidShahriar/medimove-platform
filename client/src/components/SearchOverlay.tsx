@@ -26,8 +26,9 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
   // 1. Fetch all products when component mounts
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-    fetch(`${API_URL}/api/products`)
+const API_URL = import.meta.env.PROD 
+  ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+  : 'http://localhost:5001';    fetch(`${API_URL}/api/products`)
       .then(res => res.json())
       .then(data => {
         setProducts(data);
