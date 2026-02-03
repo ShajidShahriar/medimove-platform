@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import imageCompression from 'browser-image-compression';
-import { UploadCloud, X, Loader2, ImagePlus } from 'lucide-react';
+import { UploadCloud, X, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface ImageUploaderProps {

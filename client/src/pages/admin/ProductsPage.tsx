@@ -4,6 +4,7 @@ import { toast } from 'sonner';
 import AddProductModal from '../../components/admin/AddProductModal';
 import ProductThumbnail from '../../components/admin/ProductThumbnail'; 
 
+// Improved Interface to match your backend data structure
 interface Product {
   _id: string;
   name: string;
@@ -18,18 +19,22 @@ interface Product {
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   // 1. Fetch Products
   const fetchProducts = async () => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-    const res = await fetch(`${API_URL}/api/products`);
-    const data = await res.json();
-    setProducts(data);
-    setIsLoading(false);
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+      const res = await fetch(`${API_URL}/api/products`);
+      const data = await res.json();
+      setProducts(data);
+      // Removed setIsLoading(false) because the state variable wasn't defined
+    } catch (error) {
+      console.error("Failed to fetch products", error);
+      toast.error("Could not load products");
+    }
   };
 
   const handleEdit = (product: Product) => {
@@ -178,12 +183,12 @@ export default function ProductsPage() {
           </tbody>
         </table>
 
-        {/* Modal Logic */}
+        {/* Modal Logic - FIXED: Added || undefined to solve the Null type error */}
         <AddProductModal 
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)} 
           onSuccess={fetchProducts}
-          productToEdit={editingProduct}
+          productToEdit={editingProduct || undefined}
         />
 
         {filteredProducts.length === 0 && (
