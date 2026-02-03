@@ -1,0 +1,19 @@
+# --- Dependencies ---
+node_modules
+package-lock.json
+yarn.lock
+
+# --- Production Builds ---
+dist
+build
+out
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- ENVIRONMENT VARIABLES (CRITICAL) ---
+# This ignores .env in ALL folders (root, client, server)
+.env
+.env.local
+.env.*.local
