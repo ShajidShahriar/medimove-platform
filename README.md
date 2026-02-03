@@ -4,7 +4,6 @@
 
 Unlike standard e-commerce, this platform focuses on **Lead Generation** and **Quote Management** rather than direct checkout, mirroring the real-world complex sales cycle of medical logistics.
 
-![Project Preview](client/public/hero-bg.jpg) 
 *(Note: Project currently uses local assets)*
 
 ##  Key Features (Client Side)
