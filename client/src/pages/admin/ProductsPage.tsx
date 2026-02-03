@@ -188,7 +188,7 @@ export default function ProductsPage() {
           isOpen={isModalOpen} 
           onClose={() => setIsModalOpen(false)} 
           onSuccess={fetchProducts}
-          productToEdit={editingProduct || undefined}
+          productToEdit={editingProduct as any}
         />
 
         {filteredProducts.length === 0 && (
