@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { X, Loader2, Save } from 'lucide-react';
 import { toast } from 'sonner';
-import ImageUploader from './ImageUploader'; // <--- We use this now
+import ImageUploader from './ImageUploader'; 
 
 interface Product {
   _id?: string;
@@ -11,7 +11,7 @@ interface Product {
   stockStatus: string;
   price: number;
   images: string[];
-  image?: string; // Keep this for legacy support (older items)
+  image?: string; 
   specs: string[];
 }
 

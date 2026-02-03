@@ -21,7 +21,11 @@ export default function BestSellers() {
 
   // The Fetch Logic
   useEffect(() => {
-    fetch('http://localhost:5001/api/products')
+  const API_URL = import.meta.env.PROD 
+    ? 'https://medimove-api-shajid-e2699ab9142e.herokuapp.com'
+    : 'http://localhost:5001';
+
+  fetch(`${API_URL}/api/products`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch products');
         return res.json();
