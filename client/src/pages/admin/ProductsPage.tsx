@@ -23,6 +23,7 @@ export default function ProductsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
+  console.log("DEBUG: Vercel sees this API URL:", import.meta.env.VITE_API_URL);
   // 1. Fetch Products
   const fetchProducts = async () => {
     try {
